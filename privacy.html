@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — MatteDev</title>
+<style>
+  @font-face {
+    font-display: swap;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    src: url('./fonts/montserrat-v31-latin-300.woff2') format('woff2');
+  }
+  @font-face {
+    font-display: swap;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./fonts/montserrat-v31-latin-regular.woff2') format('woff2');
+  }
+  @font-face {
+    font-display: swap;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    src: url('./fonts/montserrat-v31-latin-500.woff2') format('woff2');
+  }
+  @font-face {
+    font-display: swap;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    src: url('./fonts/montserrat-v31-latin-600.woff2') format('woff2');
+  }
+  @font-face {
+    font-display: swap;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    src: url('./fonts/montserrat-v31-latin-700.woff2') format('woff2');
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:         #0f0f0f;
+    --bg-card:    #161616;
+    --bg-raised:  #1c1c1c;
+    --bg-hover:   #222222;
+    --border:     #2a2a2a;
+    --border-mid: #333333;
+    --text:       #e8e8e8;
+    --text-muted: #888888;
+    --text-dim:   #555555;
+    --white:      #ffffff;
+    --accent:     #c8c8c8;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.75;
+    min-height: 100vh;
+  }
+
+  /* ── LAYOUT ── */
+  .wrapper {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ── HEADER ── */
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    background: rgba(15,15,15,0.92);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+  }
+
+  header .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  .logo span {
+    color: var(--text-dim);
+    font-weight: 300;
+  }
+
+  .version-badge {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--text-dim);
+    border: 1px solid var(--border-mid);
+    padding: 4px 10px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 80px 0 60px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+
+  .hero-sub {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-top: 16px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── META TABLE ── */
+  .meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin: 40px 0 0;
+  }
+
+  .meta-cell {
+    background: var(--bg-card);
+    padding: 16px 20px;
+  }
+
+  .meta-cell .label {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .meta-cell .value {
+    font-size: 13px;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* ── TOC ── */
+  .toc {
+    margin: 56px 0 0;
+    padding: 28px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .toc-label {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .toc-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .toc-list li a {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 8px 0;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 12.5px;
+    font-weight: 500;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.15s;
+  }
+
+  .toc-list li a:hover { color: var(--white); }
+
+  .toc-list li a .num {
+    font-size: 10px;
+    color: var(--text-dim);
+    font-weight: 300;
+    min-width: 18px;
+  }
+
+  /* ── MAIN CONTENT ── */
+  main { padding: 72px 0 100px; }
+
+  section {
+    margin-bottom: 72px;
+    padding-bottom: 72px;
+    border-bottom: 1px solid var(--border);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  section.visible { opacity: 1; transform: none; }
+  section:last-child { border-bottom: none; }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+
+  .section-num {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    min-width: 24px;
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin: 36px 0 14px;
+  }
+
+  p {
+    color: var(--text);
+    margin-bottom: 16px;
+    font-weight: 400;
+  }
+
+  /* ── CALLOUT / ALERT ── */
+  .callout {
+    border-left: 2px solid var(--border-mid);
+    padding: 18px 22px;
+    background: var(--bg-card);
+    margin: 24px 0;
+  }
+
+  .callout.primary { border-left-color: var(--accent); }
+  .callout.warn { border-left-color: #666; }
+  .callout.ok { border-left-color: #4a4a4a; }
+
+  .callout p {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .callout strong { color: var(--text); }
+
+  /* ── TABLE ── */
+  .table-wrap { overflow-x: auto; margin: 24px 0; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  thead th {
+    background: var(--bg-raised);
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-mid);
+  }
+
+  tbody td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover td { background: var(--bg-raised); }
+
+  td strong {
+    color: var(--white);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* ── LIST ── */
+  ul.policy-list {
+    list-style: none;
+    margin: 16px 0;
+  }
+
+  ul.policy-list li {
+    display: flex;
+    gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  ul.policy-list li:last-child { border-bottom: none; }
+
+  ul.policy-list li::before {
+    content: '—';
+    color: var(--text-dim);
+    font-weight: 300;
+    flex-shrink: 0;
+    padding-top: 1px;
+  }
+
+  ul.policy-list li strong { color: var(--white); }
+
+  /* ── NUMBERED LIST ── */
+  ol.policy-ol {
+    list-style: none;
+    counter-reset: policy-counter;
+    margin: 16px 0;
+  }
+
+  ol.policy-ol li {
+    counter-increment: policy-counter;
+    display: flex;
+    gap: 18px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.65;
+  }
+
+  ol.policy-ol li:last-child { border-bottom: none; }
+
+  ol.policy-ol li::before {
+    content: counter(policy-counter, decimal-leading-zero);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+    padding-top: 3px;
+    flex-shrink: 0;
+  }
+
+  ol.policy-ol li strong { color: var(--white); }
+
+  /* ── CODE BLOCK ── */
+  pre {
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    padding: 20px 24px;
+    overflow-x: auto;
+    margin: 16px 0;
+    font-family: 'Courier New', monospace;
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: #aaa;
+  }
+
+  pre .comment { color: var(--text-dim); font-style: italic; }
+  pre .prop { color: #c0c0c0; }
+  pre .val { color: #888; }
+  pre .del { color: #5a5a5a; text-decoration: line-through; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 0;
+  }
+
+  footer .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-left {
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.8;
+  }
+
+  .footer-left a {
+    color: var(--text-muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-mid);
+    padding-bottom: 1px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .footer-left a:hover { color: var(--white); border-color: var(--text-muted); }
+
+  .footer-right {
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .toc-list { grid-template-columns: 1fr; }
+    .meta-grid { grid-template-columns: 1fr; }
+    footer .wrapper { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrapper">
+    <div class="logo">MatteDev <span>/ Privacy</span></div>
+    <div class="version-badge">v2.1 — 2026</div>
+  </div>
+</header>
+
+<div class="wrapper">
+
+  <section class="hero" style="opacity:1;transform:none;border-bottom:none;margin:0;padding-bottom:0;">
+    <div class="hero-label">Informativa sulla Privacy</div>
+    <h1>Come gestiamo<br><em>i tuoi dati.</em></h1>
+    <p class="hero-sub">Ai sensi del Regolamento UE 2016/679 (GDPR) — D.Lgs. 196/2003 s.m.i.</p>
+
+    <div class="meta-grid">
+      <div class="meta-cell">
+        <div class="label">Ultimo aggiornamento</div>
+        <div class="value">9 Maggio 2026</div>
+      </div>
+      <div class="meta-cell">
+        <div class="label">Versione</div>
+        <div class="value">2.1 — Revisione Generale</div>
+      </div>
+      <div class="meta-cell">
+        <div class="label">Titolare del Trattamento</div>
+        <div class="value">MatteDev</div>
+      </div>
+      <div class="meta-cell">
+        <div class="label">Contatto</div>
+        <div class="value"><a href="mailto:support@mattedev.com" style="color:var(--text);text-decoration:none;border-bottom:1px solid var(--border-mid);">support@mattedev.com</a></div>
+      </div>
+    </div>
+
+    <nav class="toc">
+      <div class="toc-label">Indice</div>
+      <ul class="toc-list">
+        <li><a href="#s1"><span class="num">01</span>Introduzione</a></li>
+        <li><a href="#s2"><span class="num">02</span>Titolare del Trattamento</a></li>
+        <li><a href="#s3"><span class="num">03</span>Dati Trattati</a></li>
+        <li><a href="#s4"><span class="num">04</span>Finalità e Base Giuridica</a></li>
+        <li><a href="#s5"><span class="num">05</span>Destinatari e Trasferimenti</a></li>
+        <li><a href="#s6"><span class="num">06</span>Conservazione</a></li>
+        <li><a href="#s7"><span class="num">07</span>Diritti dell'Utente</a></li>
+        <li><a href="#s8"><span class="num">08</span>Sicurezza</a></li>
+        <li><a href="#s9"><span class="num">09</span>Cookie</a></li>
+        <li><a href="#s10"><span class="num">10</span>Tutela dei Minori</a></li>
+        <li><a href="#s11"><span class="num">11</span>Modifiche</a></li>
+      </ul>
+    </nav>
+  </section>
+
+</div>
+
+<main>
+<div class="wrapper">
+
+  <!-- 1 -->
+  <section id="s1">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2>Introduzione</h2>
+    </div>
+    <p>La presente Informativa descrive in modo trasparente come MatteDev gestisce i dati personali degli utenti che accedono all'ecosistema di servizi disponibili su <strong>mattedev.com</strong>, <strong>ai.mattedev.com</strong> e le applicazioni web collegate, tra cui <strong>MatteDev AI</strong> e <strong>MatteDev Quill</strong>.</p>
+    <div class="callout primary">
+      <p><strong>Principio fondamentale.</strong> MatteDev adotta una politica di minimizzazione dei dati. Non raccogliamo, elaboriamo o archiviamo dati personali al di là di quanto strettamente necessario per erogare i servizi richiesti. I dati che transitano sui nostri sistemi sono conservati esclusivamente tramite i fornitori tecnici indicati in questa Policy.</p>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section id="s2">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2>Titolare del Trattamento</h2>
+    </div>
+    <p>Il Titolare del trattamento, ai sensi dell'Art. 4 n. 7 GDPR, è <strong>MatteDev</strong>.</p>
+    <ul class="policy-list">
+      <li><strong>Email:</strong> <a href="mailto:support@mattedev.com" style="color:var(--text-muted);text-decoration:none;">support@mattedev.com</a></li>
+      <li><strong>Sito web:</strong> <a href="https://mattedev.com" style="color:var(--text-muted);text-decoration:none;">mattedev.com</a></li>
+    </ul>
+    <p>Il Titolare risponde a ogni richiesta entro <strong>30 giorni</strong> dalla ricezione, come previsto dall'Art. 12 GDPR.</p>
+  </section>
+
+  <!-- 3 -->
+  <section id="s3">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2>Dati Trattati: Cosa Raccogliamo Davvero</h2>
+    </div>
+    <p>MatteDev <strong>non raccoglie dati personali in modo autonomo e diretto</strong>. L'unica raccolta avviene tramite i servizi tecnici di terze parti necessari al funzionamento della piattaforma.</p>
+
+    <h3>Dati conservati tramite Firebase</h3>
+    <p>I seguenti dati vengono archiviati esclusivamente su Firebase (Firestore + Firebase Authentication) di Google LLC, per i servizi che richiedono un account:</p>
+    <ul class="policy-list">
+      <li><strong>Immagine del profilo</strong> fornita dal provider OAuth scelto dall'utente</li>
+      <li><strong>Nome utente</strong> / nome visualizzato associato all'account</li>
+      <li><strong>Timestamp di creazione account</strong> e <strong>modifica del profilo</strong></li>
+      <li><strong>Contenuti generati dall'utente</strong> nell'utilizzo dei servizi (es. conversazioni, documenti, note), esclusivamente per i servizi che prevedono il salvataggio di tali dati</li>
+    </ul>
+    <div class="callout ok">
+      <p>Questi dati sono accessibili esclusivamente dall'utente (previa autenticazione) e da MatteDev per la fornitura del servizio. Non vengono analizzati, monetizzati o condivisi con terzi.</p>
+    </div>
+
+    <h3>Dati ricevuti da servizi esterni</h3>
+    <p>Alcuni componenti tecnici contattano servizi esterni che possono ricevere l'indirizzo IP dell'utente o altri metadati di connessione. MatteDev non ha accesso diretto a questi dati.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Servizio</th>
+            <th>Finalità</th>
+            <th>Dato potenzialmente ricevuto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Cloudflare</strong></td>
+            <td>Protezione DDoS, CDN, sicurezza infrastrutturale</td>
+            <td>Indirizzo IP (anonimizzato per le analitiche)</td>
+          </tr>
+          <tr>
+            <td><strong>GitHub Pages / Netlify</strong></td>
+            <td>Hosting e distribuzione delle applicazioni web</td>
+            <td>Indirizzo IP (log standard dei server web)</td>
+          </tr>
+          <tr>
+            <td><strong>Firebase Auth (Google)</strong></td>
+            <td>Autenticazione OAuth</td>
+            <td>Email, nome, immagine profilo forniti dall'utente</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+  </section>
+
+  <!-- 4 -->
+  <section id="s4">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2>Finalità del Trattamento e Base Giuridica</h2>
+    </div>
+    <p>I dati trattati da MatteDev perseguono esclusivamente le seguenti finalità:</p>
+    <ol class="policy-ol">
+      <li><strong>Fornitura del servizio</strong> — Archiviazione del profilo utente e dei contenuti generati dall'utente per consentire l'accesso ai servizi richiesti e il recupero dei dati nelle sessioni successive. <em>Base: Art. 6.1.b GDPR (esecuzione del contratto).</em></li>
+      <li><strong>Sicurezza dell'infrastruttura</strong> — Utilizzo dei dati tecnici di navigazione tramite Cloudflare per prevenire attacchi DDoS e abusi. <em>Base: Art. 6.1.f GDPR (interesse legittimo).</em></li>
+      <li><strong>Personalizzazione avanzata (futura)</strong> — Qualora introdotta, avverrà esclusivamente previo consenso specifico, informato e revocabile. <em>Base: Art. 6.1.a GDPR (consenso).</em></li>
+    </ol>
+  </section>
+
+  <!-- 5 -->
+  <section id="s5">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2>Destinatari e Trasferimento dei Dati</h2>
+    </div>
+    <p>MatteDev <strong>non vende, non cede e non condivide dati personali con terzi</strong> per finalità commerciali o di marketing. I dati possono essere trattati dai seguenti fornitori tecnici, nominati Responsabili del Trattamento ai sensi dell'Art. 28 GDPR:</p>
+    <ul class="policy-list">
+      <li><strong>Google LLC</strong> (Firebase, API Google, OAuth) — autenticazione, database, eventuali servizi di elaborazione cloud. Certificata Data Privacy Framework EU-USA.</li>
+      <li><strong>Cloudflare, Inc.</strong> — sicurezza di rete, CDN, protezione DDoS. Certificata Data Privacy Framework EU-USA.</li>
+      <li><strong>GitHub, Inc. / Netlify, Inc.</strong> — hosting del codice e delle applicazioni. Conformi alle normative applicabili con garanzie contrattuali per trasferimenti extra-SEE.</li>
+    </ul>
+    <div class="callout primary">
+      <p><strong>Trasferimenti extra-SEE.</strong> Alcuni fornitori elaborano dati negli Stati Uniti. Tali trasferimenti avvengono in conformità alle Clausole Contrattuali Standard (SCC) approvate dalla Commissione Europea (Decisione 2021/914) e/o al Data Privacy Framework EU-USA (Decisione di adeguatezza del 10 luglio 2023).</p>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section id="s6">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2>Periodo di Conservazione</h2>
+    </div>
+    <ul class="policy-list">
+      <li><strong>Account utente</strong> (profilo, nome, immagine) — conservati fino alla richiesta di cancellazione dell'account.</li>
+      <li><strong>Contenuti generati dall'utente</strong> (conversazioni, documenti, note e simili) — conservati fino alla cancellazione esplicita da parte dell'utente.</li>
+      <li><strong>Log tecnici</strong>timestamp di creazione account e modifica del profilo. - conservati fino alla richiesta di cancellazione dell'account.</li>
+      <li><strong>Log tecnici e di sicurezza</strong> (Cloudflare) — massimo 90 giorni.</li>
+      <li><strong>Backup</strong> — sovrascritti o eliminati entro 90 giorni dalla creazione.</li>
+    </ul>
+  </section>
+
+  <!-- 7 -->
+  <section id="s7">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2>Diritti dell'Utente</h2>
+    </div>
+    <p>In conformità agli Artt. 15–22 GDPR, l'utente ha il diritto di:</p>
+    <ul class="policy-list">
+      <li><strong>Accesso (Art. 15)</strong> — Ottenere conferma del trattamento e riceverne una copia.</li>
+      <li><strong>Rettifica (Art. 16)</strong> — Correggere dati inesatti o incompleti.</li>
+      <li><strong>Cancellazione / "Diritto all'oblio" (Art. 17)</strong> — Richiedere la cancellazione dei propri dati.</li>
+      <li><strong>Limitazione del trattamento (Art. 18)</strong> — Richiedere la sospensione del trattamento in determinati casi.</li>
+      <li><strong>Portabilità (Art. 20)</strong> — Ricevere i propri dati in formato strutturato e leggibile da dispositivo automatico.</li>
+      <li><strong>Opposizione (Art. 21)</strong> — Opporsi al trattamento basato sull'interesse legittimo.</li>
+      <li><strong>Revoca del consenso (Art. 7.3)</strong> — Revocare in qualsiasi momento il consenso prestato.</li>
+    </ul>
+    <div class="callout primary">
+      <p><strong>Come esercitare i diritti.</strong> Invia una richiesta a <a href="mailto:support@mattedev.com" style="color:var(--text);border-bottom:1px solid var(--border-mid);">support@mattedev.com</a> specificando il diritto che intendi esercitare. MatteDev risponderà entro 30 giorni. Il servizio è gratuito. Hai inoltre il diritto di proporre reclamo al <strong>Garante per la Protezione dei Dati Personali</strong> (garanteprivacy.it).</p>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section id="s8">
+    <div class="section-header">
+      <span class="section-num">08</span>
+      <h2>Misure di Sicurezza</h2>
+    </div>
+    <p>MatteDev adotta misure tecniche e organizzative adeguate ai sensi degli Artt. 25 e 32 GDPR:</p>
+    <ul class="policy-list">
+      <li>Autenticazione sicura tramite <strong>Firebase Authentication</strong> con OAuth 2.0.</li>
+      <li>Trasmissione cifrata tramite <strong>HTTPS/TLS</strong> per tutte le comunicazioni.</li>
+      <li>Protezione di rete tramite <strong>Cloudflare</strong> (firewall, mitigazione DDoS, terminazione TLS).</li>
+      <li>Accesso ai dati limitato al solo Titolare per finalità di gestione tecnica.</li>
+      <li><strong>Firestore Security Rules</strong> configurate per garantire che ogni utente acceda esclusivamente ai propri dati.</li>
+    </ul>
+  </section>
+
+  <!-- 9 -->
+  <section id="s9">
+    <div class="section-header">
+      <span class="section-num">09</span>
+      <h2>Cookie e Tecnologie di Tracciamento</h2>
+    </div>
+    <p>MatteDev <strong>non utilizza cookie di profilazione, marketing o tracciamento comportamentale</strong>.</p>
+    <ul class="policy-list">
+      <li><strong>Cookie tecnici Firebase</strong> — Utilizzati per mantenere la sessione autenticata. Strettamente necessari al funzionamento del servizio, non richiedono consenso (Art. 122 Codice Privacy).</li>
+      <li><strong>Cookie tecnici Cloudflare</strong> — Cookie come <code style="font-family:monospace;font-size:12px;color:var(--text-muted);">__cf_bm</code> e <code style="font-family:monospace;font-size:12px;color:var(--text-muted);">cf_clearance</code> per protezione anti-bot. Tecnici e necessari per la sicurezza.</li>
+    </ul>
+  </section>
+
+  <!-- 10 -->
+  <section id="s10">
+    <div class="section-header">
+      <span class="section-num">10</span>
+      <h2>Tutela dei Minori</h2>
+    </div>
+    <p>I servizi MatteDev <strong>non sono destinati a persone di età inferiore ai 16 anni</strong> (Art. 8 GDPR; Art. 2-quinquies D.Lgs. 196/2003 come modificato dal D.Lgs. 101/2018). MatteDev non raccoglie consapevolmente dati personali di minori. Qualora venisse a conoscenza di tale trattamento, provvederà alla cancellazione immediata dei dati.</p>
+  </section>
+
+  <!-- 11 -->
+  <section id="s11">
+    <div class="section-header">
+      <span class="section-num">11</span>
+      <h2>Modifiche alla Presente Policy</h2>
+    </div>
+    <p>MatteDev si riserva il diritto di aggiornare la presente Informativa per adeguarla a nuovi servizi o normative. </p>
+  </section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrapper">
+    <div class="footer-left">
+      <strong style="color:var(--text);">MatteDev</strong><br>
+      <a href="mailto:support@mattedev.com">support@mattedev.com</a> &nbsp;·&nbsp;
+      <a href="https://mattedev.com">mattedev.com</a><br>
+      Redatta ai sensi del Reg. UE 2016/679 (GDPR) e del D.Lgs. 196/2003 s.m.i.
+    </div>
+    <div class="footer-right">© 2026 MatteDev</div>
+  </div>
+</footer>
+
+<script>
+  // Scroll-triggered fade-in per le sezioni
+  const sections = document.querySelectorAll('main section');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.06 });
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>

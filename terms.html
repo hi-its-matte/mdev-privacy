@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Termini di Servizio — MatteDev</title>
+<style>
+  @font-face {
+    font-display: swap;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    src: url('./fonts/montserrat-v31-latin-300.woff2') format('woff2');
+  }
+  @font-face {
+    font-display: swap;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./fonts/montserrat-v31-latin-regular.woff2') format('woff2');
+  }
+  @font-face {
+    font-display: swap;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    src: url('./fonts/montserrat-v31-latin-500.woff2') format('woff2');
+  }
+  @font-face {
+    font-display: swap;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    src: url('./fonts/montserrat-v31-latin-600.woff2') format('woff2');
+  }
+  @font-face {
+    font-display: swap;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    src: url('./fonts/montserrat-v31-latin-700.woff2') format('woff2');
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:         #0f0f0f;
+    --bg-card:    #161616;
+    --bg-raised:  #1c1c1c;
+    --border:     #2a2a2a;
+    --border-mid: #333333;
+    --text:       #e8e8e8;
+    --text-muted: #888888;
+    --text-dim:   #555555;
+    --white:      #ffffff;
+    --accent:     #c8c8c8;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.75;
+    min-height: 100vh;
+  }
+
+  .wrapper {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ── HEADER ── */
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    background: rgba(15,15,15,0.92);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+  }
+
+  header .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+  .logo span { color: var(--text-dim); font-weight: 300; }
+
+  .version-badge {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--text-dim);
+    border: 1px solid var(--border-mid);
+    padding: 4px 10px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 80px 0 60px;
+  }
+
+  .hero-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+
+  .hero-sub {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-top: 16px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── META GRID ── */
+  .meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin: 40px 0 0;
+  }
+
+  .meta-cell {
+    background: var(--bg-card);
+    padding: 16px 20px;
+  }
+
+  .meta-cell .label {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .meta-cell .value {
+    font-size: 13px;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* ── SCOPE PILLS ── */
+  .scope-block {
+    margin: 32px 0 0;
+    padding: 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+  }
+
+  .scope-label {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .pill {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    border: 1px solid var(--border-mid);
+    padding: 5px 12px;
+    text-transform: uppercase;
+  }
+
+  /* ── TOC ── */
+  .toc {
+    margin: 48px 0 0;
+    padding: 28px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .toc-label {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .toc-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .toc-list li a {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 8px 0;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 12.5px;
+    font-weight: 500;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.15s;
+  }
+
+  .toc-list li a:hover { color: var(--white); }
+
+  .toc-list li a .num {
+    font-size: 10px;
+    color: var(--text-dim);
+    font-weight: 300;
+    min-width: 18px;
+  }
+
+  /* ── MAIN ── */
+  main { padding: 72px 0 100px; }
+
+  section {
+    margin-bottom: 72px;
+    padding-bottom: 72px;
+    border-bottom: 1px solid var(--border);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  section.visible { opacity: 1; transform: none; }
+  section:last-child { border-bottom: none; }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+
+  .section-num {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    min-width: 24px;
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin: 36px 0 14px;
+  }
+
+  p {
+    color: var(--text);
+    margin-bottom: 16px;
+    font-weight: 400;
+  }
+
+  a {
+    color: var(--text-muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-mid);
+    padding-bottom: 1px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  a:hover { color: var(--white); border-color: var(--text-muted); }
+
+  /* ── CALLOUT ── */
+  .callout {
+    border-left: 2px solid var(--border-mid);
+    padding: 18px 22px;
+    background: var(--bg-card);
+    margin: 24px 0;
+  }
+  .callout.primary { border-left-color: var(--accent); }
+  .callout.warn    { border-left-color: #666; }
+  .callout.ok      { border-left-color: #4a4a4a; }
+  .callout p { margin: 0; font-size: 13.5px; color: var(--text-muted); line-height: 1.7; }
+  .callout strong { color: var(--text); }
+
+  /* ── LISTS ── */
+  ul.policy-list {
+    list-style: none;
+    margin: 16px 0;
+  }
+
+  ul.policy-list li {
+    display: flex;
+    gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  ul.policy-list li:last-child { border-bottom: none; }
+
+  ul.policy-list li::before {
+    content: '—';
+    color: var(--text-dim);
+    font-weight: 300;
+    flex-shrink: 0;
+    padding-top: 1px;
+  }
+
+  ul.policy-list li strong { color: var(--white); }
+
+  /* ── PROHIBITED TABLE ── */
+  .prohib-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin: 20px 0;
+  }
+
+  .prohib-row {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 16px;
+    align-items: start;
+    background: var(--bg-card);
+    padding: 14px 18px;
+    font-size: 13.5px;
+    line-height: 1.6;
+    transition: background 0.15s;
+  }
+
+  .prohib-row:hover { background: var(--bg-raised); }
+
+  .prohib-icon {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-dim);
+    padding-top: 3px;
+    letter-spacing: 0.05em;
+  }
+
+  .prohib-text strong { color: var(--white); display: block; margin-bottom: 2px; }
+  .prohib-text span { color: var(--text-muted); font-size: 13px; }
+
+  /* ── LICENSE BLOCK ── */
+  .license-block {
+    background: var(--bg-raised);
+    border: 1px solid var(--border-mid);
+    padding: 24px;
+    margin: 20px 0;
+  }
+
+  .license-block .lic-name {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .license-block p {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    line-height: 1.7;
+  }
+
+  .license-block p:last-child { margin-bottom: 0; }
+
+  .license-block .lic-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border: 1px solid var(--border-mid);
+    border-bottom: 1px solid var(--border-mid);
+    padding: 8px 14px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .license-block .lic-link:hover { color: var(--white); border-color: var(--text-muted); }
+
+  /* ── AI DISCLAIMER ── */
+  .ai-disclaimer {
+    border: 1px solid var(--border-mid);
+    padding: 28px;
+    margin: 24px 0;
+    background: var(--bg-card);
+    position: relative;
+  }
+
+  .ai-disclaimer::before {
+    content: 'AI';
+    position: absolute;
+    top: -1px;
+    right: 20px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--bg);
+    background: var(--text-dim);
+    padding: 3px 8px;
+  }
+
+  .ai-disclaimer p {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    line-height: 1.7;
+  }
+  .ai-disclaimer p:last-child { margin-bottom: 0; }
+  .ai-disclaimer strong { color: var(--text); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 0;
+  }
+
+  footer .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-left {
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.8;
+  }
+
+  .footer-right {
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .toc-list, .meta-grid { grid-template-columns: 1fr; }
+    footer .wrapper { flex-direction: column; align-items: flex-start; }
+    .pills { gap: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrapper">
+    <div class="logo">MatteDev <span>/ Termini</span></div>
+    <div class="version-badge">v1.0 — 2026</div>
+  </div>
+</header>
+
+<div class="wrapper">
+  <div class="hero" style="opacity:1;transform:none;">
+    <div class="hero-label">Termini di Servizio</div>
+    <h1>Le regole<br><em>dell'ecosistema.</em></h1>
+    <p class="hero-sub">Leggili con attenzione prima di utilizzare qualsiasi servizio MatteDev.</p>
+
+    <div class="meta-grid">
+      <div class="meta-cell">
+        <div class="label">Ultimo aggiornamento</div>
+        <div class="value">9 Maggio 2026</div>
+      </div>
+      <div class="meta-cell">
+        <div class="label">Versione</div>
+        <div class="value">1.0 — Cumulativa</div>
+      </div>
+      <div class="meta-cell">
+        <div class="label">Gestore</div>
+        <div class="value">MatteDev</div>
+      </div>
+      <div class="meta-cell">
+        <div class="label">Contatto</div>
+        <div class="value"><a href="mailto:support@mattedev.com">support@mattedev.com</a></div>
+      </div>
+    </div>
+
+    <div class="scope-block">
+      <div class="scope-label">Servizi coperti da questi termini</div>
+      <div class="pills">
+        <span class="pill">Tutti i servizi.</span>
+      </div>
+    </div>
+
+    <nav class="toc">
+      <div class="toc-label">Indice</div>
+      <ul class="toc-list">
+        <li><a href="#s1"><span class="num">01</span>Accettazione dei Termini</a></li>
+        <li><a href="#s2"><span class="num">02</span>Descrizione dei Servizi</a></li>
+        <li><a href="#s3"><span class="num">03</span>Account e Accesso</a></li>
+        <li><a href="#s4"><span class="num">04</span>Uso Accettabile</a></li>
+        <li><a href="#s5"><span class="num">05</span>Condotta Vietata</a></li>
+        <li><a href="#s6"><span class="num">06</span>MatteDev AI — Limitazioni</a></li>
+        <li><a href="#s7"><span class="num">07</span>Contenuti dell'Utente</a></li>
+        <li><a href="#s8"><span class="num">08</span>Codice Sorgente e Licenza</a></li>
+        <li><a href="#s9"><span class="num">09</span>Esclusione di Garanzie</a></li>
+        <li><a href="#s10"><span class="num">10</span>Limitazione di Responsabilità</a></li>
+        <li><a href="#s11"><span class="num">11</span>Sospensione e Chiusura</a></li>
+        <li><a href="#s12"><span class="num">12</span>Modifiche ai Termini</a></li>
+        <li><a href="#s13"><span class="num">13</span>Legge Applicabile</a></li>
+        <li><a href="#s14"><span class="num">14</span>Contatti</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<main>
+<div class="wrapper">
+
+  <!-- 1 -->
+  <section id="s1">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2>Accettazione dei Termini</h2>
+    </div>
+    <p>Accedendo o utilizzando qualsiasi servizio dell'ecosistema MatteDev, l'utente dichiara di aver letto, compreso e di accettare integralmente i presenti Termini di Servizio (di seguito "Termini").</p>
+    <p>Se l'utente non accetta i presenti Termini, <strong>deve cessare immediatamente l'utilizzo dei servizi</strong>.</p>
+    <div class="callout primary">
+      <p><strong>Termini cumulativi.</strong> I presenti Termini sostituiscono e incorporano qualsiasi precedente accordo o condizione d'uso relativo ai singoli servizi MatteDev. Da questa versione in poi, un unico documento regola l'intero ecosistema.</p>
+    </div>
+    <p>Per utilizzare i servizi, l'utente deve avere almeno <strong>16 anni di età</strong>. L'utilizzo da parte di minori di 16 anni è espressamente vietato, in conformità all'Art. 8 del Regolamento UE 2016/679 (GDPR) e all'Art. 2-quinquies del D.Lgs. 196/2003.</p>
+  </section>
+
+  <!-- 2 -->
+  <section id="s2">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2>Descrizione dei Servizi</h2>
+    </div>
+    <p>MatteDev mette a disposizione degli utenti i seguenti servizi, tutti forniti a titolo <strong>completamente gratuito</strong>:</p>
+    <ul class="policy-list">
+      <li><strong>mattedev.com</strong> — Sito web principale dell'ecosistema MatteDev. Punto di accesso ai servizi e alle informazioni del progetto.</li>
+      <li><strong>MatteDev AI (ai.mattedev.com)</strong> — Assistente conversazionale basato su intelligenza artificiale, accessibile tramite interfaccia web. Il servizio elabora le richieste dell'utente tramite modelli AI di terze parti (Google Gemini API).</li>
+      <li><strong>MatteDev Platform</strong> — Launcher di tutti i servizi dell'ecosistema MatteDev.</li>
+      <li><strong>MatteDev Status</strong> — Stato dei servizi MatteDev.</li>
+      <li><strong>MatteDev Quill</strong> — Editor di documenti web integrato nell'ecosistema MatteDev, che consente la creazione, modifica e salvataggio di testi e note personali.</li>
+    </ul>
+    <div class="callout ok">
+      <p>MatteDev si riserva il diritto di aggiungere, modificare o rimuovere funzionalità dai servizi in qualsiasi momento, con o senza preavviso, trattandosi di servizi gratuiti in continua evoluzione.</p>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section id="s3">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2>Account e Accesso</h2>
+    </div>
+    <p>Alcuni servizi MatteDev richiedono la creazione di un account tramite autenticazione con provider di terze parti (attualmente Google, tramite Firebase Authentication).</p>
+
+    <h3>Obblighi dell'utente titolare dell'account</h3>
+    <ul class="policy-list">
+      <li><strong>Account personale e non trasferibile.</strong> L'account è strettamente personale. È vietato cedere, condividere, vendere o trasferire l'accesso al proprio account a terzi, a titolo oneroso o gratuito.</li>
+      <li><strong>Credenziali.</strong> L'utente è responsabile della sicurezza delle proprie credenziali di accesso. Qualsiasi attività svolta tramite il proprio account è considerata effettuata dall'utente stesso.</li>
+      <li><strong>Notifica di accessi non autorizzati.</strong> In caso di sospetto accesso non autorizzato all'account, l'utente deve notificarlo tempestivamente a <a href="mailto:support@mattedev.com">support@mattedev.com</a>.</li>
+      <li><strong>Informazioni veritiere.</strong> L'utente si impegna a non creare account con dati falsi, identità false o per conto di terzi senza autorizzazione.</li>
+      <li><strong>Un account per persona.</strong> Non è consentita la creazione di più account da parte di uno stesso utente, salvo esplicita autorizzazione scritta da parte di MatteDev.</li>
+    </ul>
+  </section>
+
+  <!-- 4 -->
+  <section id="s4">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2>Uso Accettabile</h2>
+    </div>
+    <p>I servizi MatteDev possono essere utilizzati esclusivamente per scopi personali, leciti e conformi ai presenti Termini, alla normativa italiana e al diritto dell'Unione Europea applicabile.</p>
+    <p>L'utente si impegna a utilizzare i servizi in modo responsabile, rispettando gli altri utenti e l'integrità dell'infrastruttura tecnologica di MatteDev.</p>
+    <div class="callout primary">
+      <p><strong>Uso personale.</strong> I servizi MatteDev sono progettati per uso individuale e personale. L'utilizzo automatizzato, sistematico o per conto di organizzazioni richiede la preventiva autorizzazione scritta di MatteDev.</p>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section id="s5">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2>Condotta Vietata</h2>
+    </div>
+    <p>È espressamente vietato utilizzare i servizi MatteDev per le attività elencate di seguito. La violazione di anche una sola delle seguenti disposizioni può comportare la sospensione immediata dell'account.</p>
+
+    <div class="prohib-grid">
+      <div class="prohib-row">
+        <div class="prohib-icon">×</div>
+        <div class="prohib-text">
+          <strong>Abuso e spam dell'AI</strong>
+          <span>Inviare richieste automatizzate, massicce o ripetitive a MatteDev AI con l'intento di sovraccaricare il sistema, aggirare i limiti d'uso o ottenere output in modo non conforme all'uso personale previsto.</span>
+        </div>
+      </div>
+      <div class="prohib-row">
+        <div class="prohib-icon">×</div>
+        <div class="prohib-text">
+          <strong>Attività illegali</strong>
+          <span>Utilizzare i servizi per compiere, facilitare o promuovere attività illegali ai sensi della normativa italiana o europea, incluse frodi, violazioni di diritti di terzi, diffamazione o distribuzione di contenuti illeciti.</span>
+        </div>
+      </div>
+      <div class="prohib-row">
+        <div class="prohib-icon">×</div>
+        <div class="prohib-text">
+          <strong>Tentativo di compromissione dell'infrastruttura</strong>
+          <span>Effettuare tentativi di accesso non autorizzato ai sistemi, eseguire attacchi informatici (DDoS, injection, scraping aggressivo), o interferire con il corretto funzionamento dei servizi.</span>
+        </div>
+      </div>
+      <div class="prohib-row">
+        <div class="prohib-icon">×</div>
+        <div class="prohib-text">
+          <strong>Impersonificazione</strong>
+          <span>Fingersi MatteDev, un suo rappresentante, o qualsiasi altra persona fisica o giuridica in modo da trarre in inganno altri utenti o terzi.</span>
+        </div>
+      </div>
+      <div class="prohib-row">
+        <div class="prohib-icon">×</div>
+        <div class="prohib-text">
+          <strong>Contenuti dannosi</strong>
+          <span>Inserire, trasmettere o richiedere la generazione di contenuti che promuovano violenza, odio, discriminazione, abuso, o che violino i diritti di terzi, inclusi minori.</span>
+        </div>
+      </div>
+      <div class="prohib-row">
+        <div class="prohib-icon">×</div>
+        <div class="prohib-text">
+          <strong>Elusione delle misure di sicurezza</strong>
+          <span>Tentare di aggirare, disabilitare o manomettere qualsiasi misura di sicurezza, filtro o restrizione implementata sui servizi MatteDev.</span>
+        </div>
+      </div>
+      <div class="prohib-row">
+        <div class="prohib-icon">×</div>
+        <div class="prohib-text">
+          <strong>Raccolta dati non autorizzata</strong>
+          <span>Estrarre, raccogliere o archiviare dati di altri utenti o dati del sistema senza esplicita autorizzazione, tramite qualsiasi mezzo automatizzato o manuale.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section id="s6">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2>MatteDev AI — Limitazioni e Avvertenze</h2>
+    </div>
+    <p>MatteDev AI è un assistente conversazionale basato su modelli di intelligenza artificiale generativa di terze parti. L'utilizzo di questo servizio è soggetto alle seguenti limitazioni specifiche, che l'utente accetta espressamente.</p>
+
+    <div class="ai-disclaimer">
+      <p><strong>Gli output di MatteDev AI non sono consulenze professionali.</strong> Le risposte generate dall'AI non costituiscono consulenza legale, medica, finanziaria, psicologica o di qualsiasi altra natura professionale. L'utente non deve fare affidamento sugli output dell'AI per decisioni che richiedono il parere di un professionista qualificato.</p>
+      <p><strong>L'AI può produrre informazioni errate.</strong> I modelli di intelligenza artificiale generativa possono commettere errori, produrre informazioni imprecise, obsolete o contestualizzate in modo non corretto (c.d. "allucinazioni"). MatteDev non garantisce l'accuratezza, la completezza o l'aggiornamento degli output generati.</p>
+      <p><strong>MatteDev non è responsabile delle decisioni prese sulla base degli output dell'AI.</strong> L'utente è l'unico responsabile di come utilizza e interpreta i contenuti generati da MatteDev AI.</p>
+    </div>
+
+    <h3>Divieto di abuso del servizio AI</h3>
+    <ul class="policy-list">
+      <li>È vietato utilizzare MatteDev AI per generare contenuti illegali, discriminatori, offensivi o dannosi.</li>
+      <li>È vietato inviare richieste automatizzate o sistematiche al servizio (bot, script, API scraping).</li>
+      <li>È vietato tentare di manipolare il comportamento del modello AI attraverso tecniche di "prompt injection" o "jailbreaking" finalizzate a eludere le linee guida del servizio.</li>
+      <li>Il servizio è destinato esclusivamente all'uso personale dell'utente registrato.</li>
+    </ul>
+  </section>
+
+  <!-- 7 -->
+  <section id="s7">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2>Contenuti dell'Utente</h2>
+    </div>
+    <p>I contenuti inseriti dall'utente nei servizi MatteDev — inclusi messaggi inviati a MatteDev AI e documenti creati su MatteDev Quill — rimangono di <strong>esclusiva proprietà dell'utente</strong>.</p>
+
+    <h3>Licenza limitata concessa a MatteDev</h3>
+    <p>Inserendo contenuti nei servizi, l'utente concede a MatteDev una licenza limitata, non esclusiva, non trasferibile e revocabile, strettamente necessaria a:</p>
+    <ul class="policy-list">
+      <li>Archiviare e visualizzare i contenuti all'utente attraverso l'interfaccia dei servizi.</li>
+      <li>Trasmettere i contenuti ai fornitori tecnici (es. Google Gemini API) per l'elaborazione richiesta dall'utente.</li>
+    </ul>
+    <div class="callout ok">
+      <p>MatteDev <strong>non utilizza i contenuti dell'utente</strong> per addestrare modelli AI, per finalità di marketing, per analisi aggregate o per qualsiasi scopo diverso dall'erogazione del servizio richiesto. I contenuti non vengono condivisi con terzi, salvo quanto necessario per il funzionamento tecnico del servizio (si veda la Privacy Policy).</p>
+    </div>
+
+    <h3>Responsabilità sui contenuti</h3>
+    <p>L'utente è l'unico responsabile dei contenuti che inserisce nei servizi MatteDev e garantisce che tali contenuti non violino diritti di terzi, normative vigenti o i presenti Termini. MatteDev si riserva il diritto di rimuovere contenuti che violino i presenti Termini.</p>
+  </section>
+
+  <!-- 8 -->
+  <section id="s8">
+    <div class="section-header">
+      <span class="section-num">08</span>
+      <h2>Codice Sorgente e Licenza Open Source</h2>
+    </div>
+    <p>I servizi dell'ecosistema MatteDev sono sviluppati come <strong>software open source</strong>. Il codice sorgente è disponibile pubblicamente su GitHub.</p>
+
+    <div class="license-block">
+      <div class="lic-name">Licenza Open Source</div>
+      <p>Il codice sorgente dei servizi MatteDev è distribuito secondo i termini della licenza specificata nel repository GitHub ufficiale del progetto. L'utente che accede al codice sorgente è tenuto a rispettare i termini di tale licenza.</p>
+      <p>La licenza open source si applica esclusivamente al codice sorgente del software e <strong>non implica alcun diritto</strong> sui dati degli utenti, sul nome "MatteDev", sul marchio o su altri asset dell'ecosistema non esplicitamente inclusi nel repository.</p>
+      <a href="https://github.com/hi-its-matte/mdev-OSSp" class="lic-link" target="_blank" rel="noopener noreferrer">
+        → Visualizza il repository su GitHub
+      </a>
+    </div>
+
+    <h3>Contribuzioni esterne</h3>
+    <p>Eventuali contribuzioni al codice sorgente (pull request, patch, segnalazioni di bug) sono benvenute e soggette ai termini di contribuzione indicati nel repository. Contribuendo al progetto, il contributore accetta che il proprio codice venga distribuito sotto la stessa licenza del progetto.</p>
+  </section>
+
+  <!-- 9 -->
+  <section id="s9">
+    <div class="section-header">
+      <span class="section-num">09</span>
+      <h2>Esclusione di Garanzie</h2>
+    </div>
+    <p>I servizi MatteDev sono forniti <strong>"così come sono"</strong> (<em>as is</em>) e <strong>"come disponibili"</strong> (<em>as available</em>), senza garanzie di alcun tipo, espresse o implicite.</p>
+    <ul class="policy-list">
+      <li>MatteDev non garantisce che i servizi siano disponibili ininterrottamente, privi di errori o immuni da interruzioni tecniche.</li>
+      <li>MatteDev non garantisce che i risultati ottenuti tramite l'utilizzo dei servizi siano accurati, completi o adatti a uno scopo specifico.</li>
+      <li>MatteDev non garantisce che i servizi siano compatibili con tutti i dispositivi, browser o configurazioni di sistema dell'utente.</li>
+    </ul>
+    <div class="callout warn">
+      <p>Trattandosi di servizi gratuiti in fase di sviluppo continuo, MatteDev può sospendere, modificare o interrompere i servizi in qualsiasi momento senza preavviso e senza che ciò generi alcun diritto di risarcimento in capo all'utente.</p>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section id="s10">
+    <div class="section-header">
+      <span class="section-num">10</span>
+      <h2>Limitazione di Responsabilità</h2>
+    </div>
+    <p>Nei limiti massimi consentiti dalla legge applicabile, MatteDev non sarà responsabile per danni diretti, indiretti, incidentali, consequenziali, speciali o punitivi derivanti da:</p>
+    <ul class="policy-list">
+      <li>L'utilizzo o l'impossibilità di utilizzo dei servizi.</li>
+      <li>Errori, imprecisioni o omissioni negli output generati da MatteDev AI.</li>
+      <li>Decisioni prese dall'utente sulla base di contenuti generati dai servizi.</li>
+      <li>Accesso non autorizzato o alterazione dei dati dell'utente da parte di terzi.</li>
+      <li>Interruzioni del servizio dovute a cause tecniche, manutenzione o eventi al di fuori del controllo di MatteDev.</li>
+      <li>Contenuti di terzi accessibili tramite link o riferimenti presenti nei servizi.</li>
+    </ul>
+    <div class="callout primary">
+      <p><strong>Responsabilità dei fornitori terzi.</strong> MatteDev utilizza servizi di terze parti (Google Gemini API, Firebase, Cloudflare) per l'erogazione dei propri servizi. MatteDev non è responsabile per malfunzionamenti, interruzioni o comportamenti di tali servizi esterni. Le rispettive condizioni d'uso dei fornitori terzi si applicano autonomamente.</p>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section id="s11">
+    <div class="section-header">
+      <span class="section-num">11</span>
+      <h2>Sospensione e Chiusura dell'Account</h2>
+    </div>
+    <p>MatteDev si riserva il diritto di sospendere o chiudere l'account di un utente, con effetto immediato e senza obbligo di preavviso, nei seguenti casi:</p>
+    <ul class="policy-list">
+      <li>Violazione di uno o più articoli dei presenti Termini.</li>
+      <li>Utilizzo dei servizi per finalità illegali o contrarie all'ordine pubblico.</li>
+      <li>Comportamenti che mettano a rischio la sicurezza dell'infrastruttura o degli altri utenti.</li>
+      <li>Abuso sistematico del servizio MatteDev AI (spam, automazione, jailbreaking reiterato).</li>
+    </ul>
+    <p>In caso di chiusura dell'account, l'utente può richiedere la cancellazione dei propri dati ai sensi dell'Art. 17 GDPR inviando una richiesta a <a href="mailto:support@mattedev.com">support@mattedev.com</a>.</p>
+    <p>L'utente può in qualsiasi momento richiedere la chiusura volontaria del proprio account contattando <a href="mailto:support@mattedev.com">support@mattedev.com</a>.</p>
+  </section>
+
+  <!-- 12 -->
+  <section id="s12">
+    <div class="section-header">
+      <span class="section-num">12</span>
+      <h2>Modifiche ai Termini</h2>
+    </div>
+    <p>MatteDev si riserva il diritto di modificare i presenti Termini in qualsiasi momento. </p>
+   
+    <p>L'utilizzo continuato dei servizi dopo la data di entrata in vigore delle modifiche costituisce accettazione dei nuovi Termini. Se l'utente non accetta le modifiche, deve cessare l'utilizzo dei servizi e può richiedere la chiusura del proprio account.</p>
+    <p>La data dell'ultimo aggiornamento è sempre riportata in cima a questo documento. Le versioni precedenti sono disponibili su richiesta inviata a <a href="mailto:support@mattedev.com">support@mattedev.com</a>.</p>
+  </section>
+
+  <!-- 13 -->
+  <section id="s13">
+    <div class="section-header">
+      <span class="section-num">13</span>
+      <h2>Legge Applicabile</h2>
+    </div>
+    <p>I presenti Termini sono regolati dalla <strong>legge italiana</strong> e dal diritto dell'Unione Europea applicabile, in particolare dal Regolamento UE 2016/679 (GDPR) e dal D.Lgs. 196/2003 come modificato dal D.Lgs. 101/2018.</p>
+    </section>
+
+  <!-- 14 -->
+  <section id="s14">
+    <div class="section-header">
+      <span class="section-num">14</span>
+      <h2>Contatti</h2>
+    </div>
+    <p>Per qualsiasi domanda, segnalazione o richiesta relativa ai presenti Termini di Servizio:</p>
+    <ul class="policy-list">
+        <li><strong>Email</strong> — <a href="mailto:support@mattedev.com">support@mattedev.com</a></li>
+      <li><strong>Sito web</strong> — <a href="https://mattedev.com" target="_blank" rel="noopener noreferrer">mattedev.com</a></li>
+    </ul>
+    <div class="callout ok">
+      <p>MatteDev si impegna a rispondere a tutte le comunicazioni entro <strong>30 giorni lavorativi</strong> dalla ricezione.</p>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrapper">
+    <div class="footer-left">
+      <strong style="color:var(--text);">MatteDev</strong><br>
+      <a href="mailto:support@mattedev.com">support@mattedev.com</a> &nbsp;·&nbsp;
+      <a href="https://mattedev.com">mattedev.com</a><br>
+      Termini redatti ai sensi della legge italiana e del Reg. UE 2016/679 (GDPR)
+    </div>
+    <div class="footer-right">© 2026 MatteDev</div>
+  </div>
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('main section');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.06 });
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
